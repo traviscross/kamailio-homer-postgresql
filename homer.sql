@@ -290,3 +290,45 @@ CREATE TABLE alarm_config (
   PRIMARY KEY (id),
   UNIQUE (type)
 );
+
+-- create_logs_capture.sql
+
+CREATE TABLE logs_capture (
+  id BIGSERIAL NOT NULL,
+  date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  micro_ts BIGINT NOT NULL DEFAULT '0',
+  correlation_id VARCHAR(256) NOT NULL DEFAULT '',
+  source_ip VARCHAR(60) NOT NULL DEFAULT '',
+  source_port INTEGER NOT NULL,
+  destination_ip VARCHAR(60) NOT NULL DEFAULT '',
+  destination_port INTEGER NOT NULL,
+  proto INTEGER NOT NULL,
+  family INTEGER DEFAULT NULL,
+  type INTEGER NOT NULL,
+  node VARCHAR(125) NOT NULL,
+  msg VARCHAR(2500) NOT NULL,
+  PRIMARY KEY (id,date)
+);
+CREATE INDEX ON logs_capture (date);
+CREATE INDEX ON logs_capture (correlation_id);
+
+-- create_rtcp_capture.sql
+
+CREATE TABLE rtcp_capture (
+  id BIGSERIAL NOT NULL,
+  date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  micro_ts BIGINT NOT NULL DEFAULT '0',
+  correlation_id VARCHAR(256) NOT NULL DEFAULT '',
+  source_ip VARCHAR(60) NOT NULL DEFAULT '',
+  source_port INTEGER NOT NULL,
+  destination_ip VARCHAR(60) NOT NULL DEFAULT '',
+  destination_port INTEGER NOT NULL,
+  proto INTEGER NOT NULL,
+  family INTEGER DEFAULT NULL,
+  type INTEGER NOT NULL,
+  node VARCHAR(125) NOT NULL,
+  msg VARCHAR(1500) NOT NULL,
+  PRIMARY KEY (id,date)
+);
+CREATE INDEX ON rtcp_capture (date);
+CREATE INDEX ON rtcp_capture (correlation_id);
