@@ -43,14 +43,14 @@ CREATE TABLE sip_capture (
   PRIMARY KEY (id,date)
 );
 
-CREATE INDEX sip_capture_ruri_user_idx ON sip_capture (ruri_user);
-CREATE INDEX sip_capture_from_user_idx ON sip_capture (from_user);
-CREATE INDEX sip_capture_to_user_idx ON sip_capture (to_user);
-CREATE INDEX sip_capture_pid_user_idx ON sip_capture (pid_user);
-CREATE INDEX sip_capture_auth_user_idx ON sip_capture (auth_user);
-CREATE INDEX sip_capture_callid_aleg_idx ON sip_capture (callid_aleg);
-CREATE INDEX sip_capture_date_idx ON sip_capture (date);
-CREATE INDEX sip_capture_callid_idx ON sip_capture (callid);
+CREATE INDEX ON sip_capture (ruri_user);
+CREATE INDEX ON sip_capture (from_user);
+CREATE INDEX ON sip_capture (to_user);
+CREATE INDEX ON sip_capture (pid_user);
+CREATE INDEX ON sip_capture (auth_user);
+CREATE INDEX ON sip_capture (callid_aleg);
+CREATE INDEX ON sip_capture (date);
+CREATE INDEX ON sip_capture (callid);
 
 -- homer_users.sql
 
