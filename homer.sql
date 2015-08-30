@@ -31,6 +31,7 @@ CREATE TABLE sip_capture (
   contact_port INTEGER NOT NULL,
   originator_ip VARCHAR(60) NOT NULL DEFAULT '',
   originator_port INTEGER NOT NULL,
+  correlation_id VARCHAR(256) NOT NULL,
   proto INTEGER NOT NULL,
   family INTEGER NOT NULL,
   rtp_stat VARCHAR(256) NOT NULL,
