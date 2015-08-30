@@ -1,7 +1,7 @@
 -- create_sipcapture.sql
 
 CREATE TABLE sip_capture (
-  id SERIAL NOT NULL,
+  id BIGSERIAL NOT NULL,
   date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   micro_ts BIGINT NOT NULL DEFAULT '0',
   method VARCHAR(50) NOT NULL DEFAULT '',
