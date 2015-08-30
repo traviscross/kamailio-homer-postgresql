@@ -51,6 +51,8 @@ CREATE INDEX ON sip_capture (auth_user);
 CREATE INDEX ON sip_capture (callid_aleg);
 CREATE INDEX ON sip_capture (date);
 CREATE INDEX ON sip_capture (callid);
+CREATE INDEX ON sip_capture (source_ip);
+CREATE INDEX ON sip_capture (destination_ip);
 
 -- homer_users.sql
 
