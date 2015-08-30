@@ -220,8 +220,8 @@ CREATE TABLE stats_method (
   to_date TIMESTAMP NOT NULL,
   method VARCHAR(50) NOT NULL DEFAULT '',
   auth SMALLINT NOT NULL DEFAULT '0',
-  cseq VARCHAR(100) NOT NULL,
-  totag SMALLINT NOT NULL,
+  cseq VARCHAR(100),
+  totag SMALLINT,
   total INTEGER NOT NULL,
   PRIMARY KEY (id,from_date),
   UNIQUE (from_date,to_date,method,auth,totag,cseq)
