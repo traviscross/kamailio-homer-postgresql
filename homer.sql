@@ -126,6 +126,10 @@ CREATE TABLE alarm_data_mem (
 CREATE INDEX ON alarm_data (create_date);
 CREATE INDEX ON alarm_data (type);
 
+CREATE RULE inc_alarm_data_mem AS ON INSERT TO alarm_data_mem
+  WHERE type = NEW.type AND source_ip = NEW.source_ip
+  DO INSTEAD UPDATE alarm_data_mem SET total = total + 1;
+
 CREATE stats_data (
   id BIGSERIAL NOT NULL,
   from_date TIMESTAMP NOT NULL,
@@ -162,6 +166,10 @@ CREATE TABLE stats_ip_mem (
   PRIMARY KEY (id),
   UNIQUE (method,source_ip)
 );
+
+CREATE RULE inc_stats_ip_mem AS ON INSERT TO stats_ip_mem
+  WHERE method = NEW.method AND source_ip = NEW.source_ip
+  DO INSTEAD UPDATE stats_ip_mem SET total = total + 1;
 
 CREATE TABLE stats_method (
   id BIGSERIAL NOT NULL,
@@ -220,6 +228,10 @@ CREATE TABLE stats_useragent_mem (
   PRIMARY KEY (id),
   UNIQUE (useragent,method)
 );
+
+CREATE RULE inc_stats_useragent_mem AS ON INSERT TO stats_useragent_mem
+  WHERE useragent = NEW.useragent AND method = NEW.method
+  DO INSTEAD UPDATE stats_useragent_mem SET total = total + 1;
 
 CREATE TABLE alarm_config (
   id SERIAL NOT NULL,
