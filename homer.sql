@@ -54,6 +54,49 @@ CREATE INDEX ON sip_capture (callid);
 CREATE INDEX ON sip_capture (source_ip);
 CREATE INDEX ON sip_capture (destination_ip);
 
+CREATE VIEW sip_capture_v AS
+  SELECT
+    id,
+    date,
+    micro_ts,
+    method,
+    reply_reason,
+    ruri,
+    ruri_user,
+    from_user,
+    from_tag,
+    to_user,
+    to_tag,
+    pid_user,
+    contact_user,
+    auth_user,
+    callid,
+    callid_aleg,
+    via_1,
+    via_1_branch,
+    cseq,
+    diversion,
+    reason,
+    content_type,
+    auth,
+    user_agent,
+    source_ip,
+    source_port,
+    destination_ip,
+    destination_port,
+    contact_ip,
+    contact_port,
+    originator_ip,
+    originator_port,
+    correlation_id,
+    proto,
+    family,
+    rtp_stat,
+    type,
+    node,
+    convert_from(msg,'UTF8') AS msg
+  FROM sip_capture;
+
 -- homer_users.sql
 
 CREATE TABLE homer_hosts (
@@ -80,7 +123,7 @@ CREATE TABLE homer_nodes (
   dbport VARCHAR(100) NOT NULL,
   dbusername VARCHAR(100) NOT NULL,
   dbpassword VARCHAR(100) NOT NULL,
-  dbtables VARCHAR(100) NOT NULL DEFAULT 'sip_capture',
+  dbtables VARCHAR(100) NOT NULL DEFAULT 'sip_capture_v',
   name VARCHAR(100) NOT NULL,
   status SMALLINT NOT NULL,
   PRIMARY KEY (id),
