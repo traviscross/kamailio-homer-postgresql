@@ -1,3 +1,5 @@
+-- create_sipcapture.sql
+
 CREATE TABLE sip_capture (
   id SERIAL NOT NULL,
   date TIMESTAMP WITHOUT TIME ZONE DEFAULT '1900-01-01 00:00:01' NOT NULL,
